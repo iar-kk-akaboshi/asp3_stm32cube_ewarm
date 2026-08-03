@@ -1,13 +1,13 @@
 #
 #  ターゲット依存部のCMake定義（NUCLEO-H563ZI / STM32H563 + STM32Cube HAL）
 #
-#  外部（SDK）ターゲットのパス解決規約（asp3_core PORTING_GUIDE「外部ターゲット」）：
-#   - 共通arch（arch/arm_m_gcc/common）は asp3_core サブモジュール側＝ASP3_ROOT_DIR
+#  外部（SDK）ターゲットのパス解決規約：
+#   - 共通arch（arch/arm_iar_iccarm/common）は本リポジトリ側
 #   - チップ依存部（stm32h5xx_stm32cube）・ターゲット依存部は本リポジトリ側
 #     ＝CMAKE_CURRENT_LIST_DIR 相対
 #
-set(ARCHDIR ${ASP3_ROOT_DIR}/arch/arm_m_gcc)
-get_filename_component(CHIPDIR ${CMAKE_CURRENT_LIST_DIR}/../../arch/arm_m_gcc/stm32h5xx_stm32cube ABSOLUTE)
+set(ARCHDIR ${CMAKE_CURRENT_LIST_DIR}/../../arch/arm_iar_iccarm)
+get_filename_component(CHIPDIR ${CMAKE_CURRENT_LIST_DIR}/../../arch/arm_iar_iccarm/stm32h5xx_stm32cube ABSOLUTE)
 set(TARGETDIR ${CMAKE_CURRENT_LIST_DIR})
 
 #
@@ -51,16 +51,13 @@ list(APPEND ASP3_COMPILE_DEFS
 )
 
 #
-#  Cortex-M33 + FPU（fpv5-sp-d16 / hard）— CubeMX H563 既定に合わせる．
+#  Cortex-M33 + FPU（fpv5-sp-d16 / hard）$2014 CubeMX H563 既定に合わせる．
 #  asp3 ライブラリと cfg1_out（オフセット抽出用ELF）に適用される．
 #
 list(APPEND ASP3_COMPILE_OPTIONS
-    -mcpu=cortex-m33
-    -mthumb
-    -mfpu=fpv5-sp-d16
-    -mfloat-abi=hard
-    -ffunction-sections
-    -fdata-sections
+ #   --cpu=Cortex-M33.no_dsp.no_se 
+ #   --fpu=VFPv5_sp 
+      $<$<COMPILE_LANGUAGE:C>:-e>
 )
 
 #
@@ -68,21 +65,18 @@ list(APPEND ASP3_COMPILE_OPTIONS
 #  CubeMX 実リンカスクリプトは不要（nm でのシンボル値抽出のみ）．
 #
 list(APPEND ASP3_LINK_OPTIONS
-    -mcpu=cortex-m33
-    -mthumb
-    -mfpu=fpv5-sp-d16
-    -mfloat-abi=hard
-    -nostartfiles
-    -nostdlib
+   # --cpu=Cortex-M33.no_dsp.no_se 
+   # --fpu=VFPv5_sp 
+    --no_remove
     #  CubeMX ツールチェーン（cmake/gcc-arm-none-eabi.cmake）は
     #  CMAKE_EXE_LINKER_FLAGS に -Wl,--gc-sections をグローバル付与する．
     #  cfg1_out（オフセット抽出用ELF）では TOPPERS_magic_number 等の未参照
     #  シンボルがGCで消えると cfg パス2が失敗するため，後勝ちで無効化する
     #  （asp3_core 側の gc-sections 除去はツールチェーンのグローバル付与には
     #  効かないため，ここで打ち消す）．最終 exe は CubeMX 側でGC有効のまま．
-    -Wl,--no-gc-sections
+    ######################-Wl,--no-gc-sections
 )
-list(APPEND ASP3_LINK_LIBS c gcc)
+################# list(APPEND ASP3_LINK_LIBS c gcc)
 
 #
 #  ターゲット依存部のソース（いずれも非TECS版）

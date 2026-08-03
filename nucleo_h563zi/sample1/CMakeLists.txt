@@ -58,7 +58,7 @@ endif()
 
 # asp3 カーネルライブラリをライブラリ専用モードでビルド
 set(ASP3_LIBRARY_ONLY ON CACHE BOOL "build asp3 as library only" FORCE)
-add_subdirectory(${ASP3_CORE_DIR} asp3)
+add_subdirectory(../../asp3 asp3)
 
 # Link directories setup
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
@@ -88,6 +88,11 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 
     # Add user defined libraries
     asp3
+)
+
+target_link_options(${CMAKE_PROJECT_NAME} PRIVATE
+    --map
+    ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.map
 )
 
 # システムサービス（banner / syslog / serial / logtask 等）を追加
