@@ -30,12 +30,13 @@ IAR Embedded Workbench for ARM（EWARM)を使用。
 |SREC生成  |  ielftool.exe |
 
 
-##関連ツール
-・STM32CubeProg：EWARMで書き込む場合は不要。インストールしてPATH設定をしてください。
-・CMake：  	インストールしてPATHに設定してください。
-・PYTHON: 	インストールしてPATHに設定してください。
-・Ninja:		EWARMにインストールしたものが利用できます。
-		EWARMインストールフォルダの\common\binにあるので、ここもPATH設定してください。
+## 関連ツール
+|---|---|
+|STM32CubeProg | EWARMで書き込む場合は不要。インストールしてPATH設定をしてください。|
+|CMake |  インストールしてPATHに設定してください。|
+|PYTHON     |インストールしてPATHに設定してください。 |
+|Ninja  |  EWARMにインストールしたものが利用できます。EWARMインストールフォルダの\common\binにあるので、ここもPATH設定してください。 |
+
 
 
 またTOPPERS/ASP3ではGCCのnmの出力が必要ですが(cfg1_out.syms)、EWARMではMAPファイルから同形式の出力をするためのmap2symbol.pyというスクリプトを用意しています。
