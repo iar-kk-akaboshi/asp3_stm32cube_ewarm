@@ -29,8 +29,7 @@ IAR Embedded Workbench for ARM（EWARM)を使用。
 |リンカ     |  ilinkarm.exe |
 |SREC生成  |  ielftool.exe |
 
-これらのインストールパスを/sample1/cmake/iar-iccarm.cmakeにて登録しています。EWARMのバージョンが異なる場合やインストールパスが異なる場合には、こちらを変更してください。
-![sample1/cmake/iar-iccarm.cmake](images/iar-iccarm.cmake.png)
+
 
 
 
@@ -89,6 +88,10 @@ FW パッケージ未導入の場合はダウンロード確認が出るので�
 ### 1-b. 生成されたsample1/cmake/stm32cubemx/CMakeLists.txtの修正
 STM32CubeMXで生成されたsample1/cmake/stm32cubemx/CMakeLists.txtを修正します。
 ![sample1/cmake/stm32cubemx/CMakeLists.txtを修正](images/modifyCMakeLists.png)
+
+### 1-b. 生成されたsample1/cmake/cmake/iar-iccarm.cmakeの修正
+EWARMインストールパスを/sample1/cmake/iar-iccarm.cmakeにて登録しています。EWARMのバージョンが異なる場合やインストールパスが異なる場合には、こちらを変更してください。
+![sample1/cmake/iar-iccarm.cmake](images/iar-iccarm.cmake.png)
 
 ### 2-a. コマンドラインでビルド
 
