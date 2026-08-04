@@ -1,4 +1,4 @@
-# TOPPERS/ASP3 Core の STM32 CubeMX+ IAR Embedded Workbench for ARM(EWARM) 向け環境
+<img width="1040" height="62" alt="image" src="https://github.com/user-attachments/assets/91d0f7d0-bb79-4c56-80f8-e2c370c99652" /># TOPPERS/ASP3 Core の STM32 CubeMX+ IAR Embedded Workbench for ARM(EWARM) 向け環境
 
 本ドキュメントはasp3_stm32版をベースに記述してあります。差分は入れたつもりですが、大きな変更が無い場合はそのまま利用している部分もある点はご容赦ください。
 
@@ -62,9 +62,9 @@ clone 直後はビルドできません。**最初に CubeMX で GENERATE CODE �
 ## ビルド方法
 
 ### 0. クローン
-<span style="color: red; font-size: 48px;">ここは変更予定</span>
+<span style="color: red; font-size: 48px;">以下コマンドでcloneしてください</span>
 ```bash
-git clone --recursive https://github.com/exshonda/asp3_stm32cube.git   
+git clone --recursive https://github.com/iar-kk-akaboshi/asp3_stm32cube_ewarm.git
 ```
 
 ### 1. STM32CubeMX でコード生成
