@@ -1,4 +1,4 @@
-<img width="1040" height="62" alt="image" src="https://github.com/user-attachments/assets/91d0f7d0-bb79-4c56-80f8-e2c370c99652" /># TOPPERS/ASP3 Core の STM32 CubeMX+ IAR Embedded Workbench for ARM(EWARM) 向け環境
+<img width="1674" height="260" alt="image" src="https://github.com/user-attachments/assets/f495eee6-6567-47a3-b541-b7e609838b0e" /><img width="1040" height="62" alt="image" src="https://github.com/user-attachments/assets/91d0f7d0-bb79-4c56-80f8-e2c370c99652" /># TOPPERS/ASP3 Core の STM32 CubeMX+ IAR Embedded Workbench for ARM(EWARM) 向け環境
 
 本ドキュメントはasp3_stm32版をベースに記述してあります。差分は入れたつもりですが、大きな変更が無い場合はそのまま利用している部分もある点はご容赦ください。
 
@@ -30,7 +30,12 @@ IAR Embedded Workbench for ARM（EWARM)を使用。
 |SREC生成  |  ielftool.exe |
 
 
-
+##関連ツール
+・STM32CubeProg：EWARMで書き込む場合は不要。インストールしてPATH設定をしてください。
+・CMake：  	インストールしてPATHに設定してください。
+・PYTHON: 	インストールしてPATHに設定してください。
+・Ninja:		EWARMにインストールしたものが利用できます。
+		EWARMインストールフォルダの\common\binにあるので、ここもPATH設定してください。
 
 
 またTOPPERS/ASP3ではGCCのnmの出力が必要ですが(cfg1_out.syms)、EWARMではMAPファイルから同形式の出力をするためのmap2symbol.pyというスクリプトを用意しています。
