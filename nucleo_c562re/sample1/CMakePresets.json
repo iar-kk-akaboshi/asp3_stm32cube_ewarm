@@ -1,0 +1,30 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}"
+        },
+        {
+            "name": "debug_GCC_NUCLEO-C562RE",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "${presetName}",
+                "TOOLCHAIN_FILE": "EWARM.cmake"
+            },
+            "inherits": "default"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "configurePreset": "default"
+        },
+        {
+            "name": "debug_GCC_NUCLEO-C562RE",
+            "configurePreset": "debug_GCC_NUCLEO-C562RE"
+        }
+    ]
+}
